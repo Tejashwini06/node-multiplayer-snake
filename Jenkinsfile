@@ -4,6 +4,9 @@ node ('ubuntu'){
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
     }  
+    stage('SAST'){
+        build 'SCA-SAST-SNYK'
+    }
     
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
@@ -16,7 +19,6 @@ node ('ubuntu'){
             app.push("latest")
         			}
          }
-  
     
     stage('Pull-image-server') {
     
