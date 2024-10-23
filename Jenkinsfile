@@ -20,6 +20,10 @@ node ('ubuntu'){
         			}
          }
     
+    stage ('DAST') {
+        build 'SECURITY-DAST-OWASP_ZAP'
+    } 
+    
     stage('Pull-image-server') {
     
          sh "docker-compose down"
